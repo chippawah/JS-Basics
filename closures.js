@@ -11,19 +11,21 @@ var outer = function(){
 
   //Code Here
 
+  var inner = outer();
+
 //Once you do that, invoke inner.
 
   //Code Here
 
-
+  inner();
 
 //Next problem
 
-
+var callF = function ()
 
 var callFriend = function(){
   var friend = 'Jake';
-  function callF(number){
+  var callF = function (number){
     return 'Calling ' + friend + ' at ' + number;
   }
   return callF;
@@ -33,24 +35,33 @@ var callFriend = function(){
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
   //Code Here
-
+ var myCall = callFriend()
+ myCall('435-215-9248')
 
 
 //Next Problem
 
-
+ 
 
 /*
   Write a function called makeCounter that makes the following code work properly.
 */
 
   //Code Here
-  var count = makeCounter();
+ 
+
+var makeCounter = function() {
+  runCount = 0;
+  return (function() {
+    runCount++;
+    return runCount;
+  })
+}
+ var count = makeCounter();
   count() // 1
   count() // 2
   count() // 3
   count() // 4
-
 
 
 //Next Problem
@@ -63,7 +74,21 @@ var callFriend = function(){
 
   //Code Here
 
+var alertName = function() {
+  console.log("IM ALERTING");
+}
 
+var secondFn = function (fn) {
+  var called = false;
+  return (function() {
+    if (!called) {
+      fn();
+      called = true;
+    } else {return 'Nope, only once'}
+  })
+}
+
+var once = secondFn(alertName);
 
 //Next Problem
 
@@ -73,7 +98,27 @@ var callFriend = function(){
   Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters. The first parameter will be an anonymous function and the second parameter, 'N', will be a number. Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times. After it's been invoked 'N' number of times, return 'STOP'.
 */
 
+var dummyFn = function() {return "I'm gonna run a few times and then stop"};
 
+var fnCounter = function (fn, maxRuns) {
+  var timesRun = 0;
+  var nRunner = function(){
+    if (timesRun < maxRuns) {
+      fn();
+      timesRun++;
+      return timesRun;
+    } else {
+      return 'STOP';
+    };
+  }
+  return nRunner;
+};
+
+testFn = fnCounter(dummyFn, 3);
+testFn();
+testFn();
+testFn();
+testFn(); // should return 'STOP'
 
 //Next Problem
 
@@ -82,8 +127,8 @@ var callFriend = function(){
 /*
   var counter = function(){
     for (var i=1; i<=5; i++) {
-      setTimeout( function timer(){
-          console.log( i );
+      setTimeout( function timer(num){
+          console.log( num );
       }, i*1000 );
     }
   };
@@ -91,7 +136,6 @@ var callFriend = function(){
   Above you have a function named counter. Examine the function (without running the code) then below write what you expect to happen when the funciton is invoked. *Hint: setTimeout calls a function or evaluates an expression after a specified number of milliseconds.
 
     //Answer Here
-
 
   Now, run the function in your console and note what happpens.
 
@@ -104,7 +148,13 @@ var callFriend = function(){
 */
 
     //Code Here
-
+  var counter = function(){
+    for (var i=1; i<=5; i++) {
+      setTimeout( function timer(num){
+          console.log( num );
+      }, i*1000, i );
+    }
+  };
 
 
 //Next Problem
@@ -124,4 +174,11 @@ var callFriend = function(){
   *Hint: Don't let this fool you. Break down what's really happening here.
 */
 
+var funcArray = [];
+var func = function (num) {
+    return (function(){ return num;})
+  }
+for (var i = 0; i < 6; i++) {
+  funcArray.push(func(i))
+};
 
