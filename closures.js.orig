@@ -48,6 +48,7 @@ var callFriend = function(){
 */
 
   //Code Here
+<<<<<<< HEAD
  
 
 var makeCounter = function() {
@@ -62,6 +63,13 @@ var makeCounter = function() {
   count() // 2
   count() // 3
   count() // 4
+=======
+  var count = makeCounter();
+  count(); // 1
+  count(); // 2
+  count(); // 3
+  count(); // 4
+>>>>>>> DevMountain/master
 
 
 //Next Problem
@@ -97,6 +105,7 @@ var once = secondFn(alertName);
   Similar to the last problem, write a function called 'fnCounter' that accepts two parameters. The first parameter, 'func', will be a function and the second parameter, 'N', will be a number. Now, in 'fnCounter', return an anonymous function that allows the parameter function to be invoked 'N' number of times. After it's been invoked 'N' number of times, return 'STOP'.
 */
 
+<<<<<<< HEAD
 var dummyFn = function() {return "I'm gonna run a few times and then stop"};
 
 var fnCounter = function (fn, maxRuns) {
@@ -112,6 +121,10 @@ var fnCounter = function (fn, maxRuns) {
   }
   return nRunner;
 };
+=======
+  //Code Here
+  
+>>>>>>> DevMountain/master
 
 testFn = fnCounter(dummyFn, 3);
 testFn();
